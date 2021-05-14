@@ -7,7 +7,7 @@ on:
 
 jobs:
   work:
-    name: Some Work
+    name: Some Workflow Main Work
     runs-on: ubuntu-latest
     steps:
       - run: echo "Some Main work"
