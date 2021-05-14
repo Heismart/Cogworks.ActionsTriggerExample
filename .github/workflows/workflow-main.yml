@@ -1,0 +1,13 @@
+name: Workflow Main
+
+on:
+  push:
+    tags:
+      - workflow/*
+
+jobs:
+  work:
+    name: Some Work
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Some Main work"
