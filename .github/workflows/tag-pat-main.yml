@@ -1,0 +1,23 @@
+name: Tag PAT Main
+on:
+  push:
+    tags:
+      - tag-pat/main/*
+
+jobs:
+  work:
+    name: Some Work
+    runs-on: ubuntu-latest
+
+    env:
+      tag: ${GITHUB_REF#refs/tags/tag-pat/main/}
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+            token: ${{ secrets.GITHUB_PAT_TOKEN }}
+      - run: echo "Some Main work"
+      - run: echo "Tag ${{ env.tag }}"
+      - run: |
+          git tag -a tag-pat/work/${{ env.tag }} -m "${{ env.tag }}"
+          git push "https://$GITHUB_ACTOR:${{ secrets.GITHUB_PAT_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --tag -f
