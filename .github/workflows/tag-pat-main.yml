@@ -15,9 +15,11 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-            token: ${{ secrets.PAT_TOKEN }}
+          token: ${{ secrets.PAT_TOKEN }}
       - run: echo "Some Main work"
       - run: echo "Tag ${{ env.tag }}"
       - run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git tag -a tag-pat/work/${{ env.tag }} -m "${{ env.tag }}"
           git push "https://$GITHUB_ACTOR:${{ secrets.PAT_TOKEN }}@github.com/$GITHUB_REPOSITORY.git" --tag -f
