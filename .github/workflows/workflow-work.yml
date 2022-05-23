@@ -6,6 +6,19 @@ on:
     types:
       - completed
   workflow_dispatch:
+    inputs:
+        artifactoryUrl:
+          description: 'Your Artifactory URL'
+          default: 'myArtifactoryURL.com'  
+        artifactoryName:
+          description: 'Your Repo Name'
+          default: 'myRepoName'
+        artifactoryPath:
+          description: 'Your Repo path'
+          default: 'myRepoPath' 
+        artifactoryToken:
+          description: 'Your Repo AccessToken'
+          default: 'TOKEN String'
 
 jobs:
   work:
