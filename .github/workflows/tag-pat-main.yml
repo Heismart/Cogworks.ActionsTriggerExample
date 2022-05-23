@@ -1,5 +1,13 @@
 name: Tag PAT Main
 on:
+  workflow_dispatch:
+    inputs:
+      openshiftServer:
+        description: 'Your Artifactory URL'
+        default: '10.0.0.1:8081'  
+      openshiftToken:
+        description: 'Your openshift token'
+        default: 'TOKEN String'
   push:
     tags:
       - tag-pat/main/*
